@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title> SOUNDVIEW </title>
+    
+    <link type="text/css" rel="stylesheet" href="soundview.css">
+    <link type="text/css" rel="stylesheet" href="vendor/bootstrap/bootstrap337.min.css">
+    <link type="text/css" rel="stylesheet" href="vendor/sweetalert2/sweetalert2.min.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <h1 class="text-center SV_text" onmouseover='TTS_speak("텍스트, 사운드뷰 프로젝트", "e")'> SOUNDVIEW <span>(JuKook Kim)</span></h1>
+        <h3 class="text-center" onmouseover='TTS_speak("텍스트, 이 페이지는 HCI 프로젝트 사운드뷰의 과제 실험을 위한 페이지입니다.", "e")'> 
+            이 페이지는 HCI 프로젝트 <span class="SV_text">SOUNDVIEW</span>의 <br>과제 실험을 위한 페이지입니다. </h3>
+        <div class="SV_btn">
+            <button class="btn btn-warning" id="start_anyang" onmouseover='TTS_speak("버튼, 사운드뷰 실행", "e")'> 
+                <span class="SV_text">SOUNDVIEW</span> 실행 
+            </button>    
+        </div>
+        
+        <div id="result_script" class="SV_bot text-center" style="display: none">
+            <p class="btn btn-warning">
+                <span class="SV_text">SOUNDVIEW </span> Bot : <span id="result">커맨드 입력 대기 중</span>
+            </p><br>
+            <audio id="player" controls style="opacity: 0; position: absolute"></audio>
+        </div>
+        
+
+    <!---------------------- Plain e-mail Form ------------------------> 
+        <form class="E-mail"> 
+            <div class="row">
+                <div class="form-group col-sm-6">
+                    <label for="reply_to" onmouseover='TTS_speak("텍스트, 보내는 사람", "e")'>보내는사람</label> 
+                    <input id="name" type="text" name="reply_to" autocomplete="off" placeholder="이름을 입력하세요."
+                        onmouseover='TTS_speak($(this).val(), "보내는 사람")' onclick='TTS_speak($(this).val(), "보내는 사람")'> 
+                </div>
+                <div class="form-group col-sm-6">
+                    <label for="send_to" onmouseover='TTS_speak("텍스트, 받는 사람", "e")'>받는사람</label> 
+                    <input type="text" name="send_to" value="soundview@naver.com" readonly
+                        onclick='TTS_speak($(this).val())'> 
+                </div>
+                <div class="form-group col-sm-12">
+                    <label for="subject" onmouseover='TTS_speak("텍스트, 제목", "e")'>제목</label> 
+                    <input id="subject" type="text" name="subject" autocomplete="off" placeholder="첫번째 / 두번째 이메일 실험입니다."
+                        onmouseover='TTS_speak($(this).val(), "제목")' onclick='TTS_speak($(this).val(), "제목")'> 
+                </div>
+                <br>
+                <div class="form-group col-sm-12">
+                    <label for="content" onmouseover='TTS_speak("텍스트, 내용", "e")'>내용</label><br>
+                    <textarea id="content" name="content" rows="14" placeholder="차례대로 자신의 전화번호, 좋아하는 색깔, 좋아하는 음식, 전래동화 한 편을 설명합니다." style="padding-top: 8px;" 
+                        onmouseover='TTS_speak($(this).val(), "내용")' onclick='TTS_speak($(this).val(), "내용")'></textarea> 
+                </div>
+            </div>
+
+            <input class="submit btn btn-primary" id="submit" type=submit value="이메일 전송" 
+                onmouseover='TTS_speak("버튼, 이메일 전송", "e")' onclick="sendEmail(true)"> 
+
+        </form> 
+    <!---------------------- Plain e-mail Form ------------------------> 
+    
+    </div>
+
+<!------------------------- JS scripts -------------------------------> 
+
+  
+  
+<script src="vendor/jquery.min.js"></script> <!-- jquery -->
+<script src="vendor/bootstrap/bootstrap337.min.js"></script> <!-- bootstrap -->
+<script src="vendor/sweetalert2/sweetalert2.all.js"></script> <!-- sweetalert2 -->
+<script src="vendor/anyang.js"></script> <!-- STT : anyang -->
+<script src="vendor/responsivevoice/responsivevoice.js"></script> <!-- TTS : responsivevoice -->
+<script src="vendor/soundview.js"></script> <!-- my custom JS -->
+
+
+</body>
+</html>

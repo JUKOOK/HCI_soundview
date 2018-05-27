@@ -1,0 +1,92 @@
+body {
+    background-color: rgba(184, 255, 142, 0.3) !important;
+}
+
+.container {
+    width: 720px !important;
+    margin: 40px auto;
+    background-color: white;
+    border: 1px solid #e3e3e3;
+    padding-bottom: 20px;
+}
+
+.container .SV_btn {
+    width: 200px;
+    margin: 20px auto;
+}
+
+.container .SV_bot {
+    width: auto;
+    margin: 20px auto;
+}
+
+#start_anyang {
+    width: 100%;
+    font-weight: 500;
+}
+
+#start_anyang:hover {
+    font-weight: bolder;
+}
+
+.container .SV_text {
+    font-family: cursive;
+    font-weight: bolder;
+}
+
+.container > h1 {
+    color: #c81414;
+}
+
+.container > h1 > span {
+    font-family: serif;
+    font-size: 50%;
+    opacity: 0.8;
+}
+    
+.container > h3 {
+    font-family: serif;
+}
+
+.E-mail {
+    width: 95%;
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+.E-mail .form-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.E-mail .form-group:nth-child(2) {
+    margin-bottom: 30px;
+}
+
+.E-mail .form-group label {
+    width: 15% !important;
+}
+
+.E-mail .form-group input,
+.E-mail .form-group textarea {
+    width: 85%;
+    border: 1px solid rgba(169, 169, 169, 0.5) !important;
+    padding-left: 4px;
+    resize: none;
+}
+
+.E-mail .form-group input {
+    
+}
+
+.E-mail .form-group.col-sm-6 label {
+    width: 32% !important;
+}
+
+.E-mail .form-group.col-sm-6 input {
+    width: 70%;    
+}
+
+.submit {
+    float: right;
+}
