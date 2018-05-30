@@ -132,7 +132,7 @@ function start_soundview() {
                     }
                 }
             },
-            '전송': function(qaz) {
+            'delivery': function(qaz) {
                 sendEmail(false);
             }
         };
