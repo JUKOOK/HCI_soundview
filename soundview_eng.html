@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title> SOUNDVIEW </title>
+    
+    <link type="text/css" rel="stylesheet" href="soundview.css">
+    <link type="text/css" rel="stylesheet" href="vendor/bootstrap/bootstrap337.min.css">
+    <link type="text/css" rel="stylesheet" href="vendor/sweetalert2/sweetalert2.min.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <h1 class="text-center SV_text" onmouseover='TTS_speak("Text, Soundeview Project", "e")'> SOUNDVIEW <span>(JuKook Kim)</span></h1>
+        <h3 class="text-center" onmouseover='TTS_speak("Text, This temporary page is for the experiment of HCI Project SoundView.", "e")'> 
+            This temporary page is for the experiment of <br>HCI Project <span class="SV_text">SOUNDVIEW</span></h3>
+        <div class="SV_btn">
+            <button class="btn btn-warning" id="start_anyang" onmouseover='TTS_speak("button, soundview execution", "e")'> 
+                <span class="SV_text">SOUNDVIEW</span>&nbsp;&nbsp;&nbsp;Execution 
+            </button>    
+        </div>
+        
+        <div id="result_script" class="SV_bot text-center" style="display: none">
+            <p class="btn btn-warning">
+                <span class="SV_text">SOUNDVIEW </span> Bot : <span id="result">Waiting for command input</span>
+            </p><br>
+            <audio id="player" controls style="opacity: 0; position: absolute"></audio>
+        </div>
+        
+
+    <!---------------------- Plain e-mail Form ------------------------> 
+        <form class="E-mail"> 
+            <div class="row">
+                <div class="form-group col-sm-6">
+                    <label for="reply_to" onmouseover='TTS_speak("text, sender", "e")'>Sender</label> 
+                    <input id="name" type="text" name="reply_to" autocomplete="off" placeholder="Please enter your name."
+                        onmouseover='TTS_speak($(this).val(), "sender")' onclick='TTS_speak($(this).val(), "sender")'> 
+                </div>
+                <div class="form-group col-sm-6">
+                    <label for="send_to" onmouseover='TTS_speak("text, recipientr", "e")'>Recipient</label> 
+                    <input type="text" name="send_to" value="soundview@naver.com" readonly
+                        onclick='TTS_speak($(this).val())'> 
+                </div>
+                <div class="form-group col-sm-12">
+                    <label for="subject" onmouseover='TTS_speak("text, title", "e")'>Title</label> 
+                    <input id="subject" type="text" name="subject" autocomplete="off" placeholder="This is First / second experiment."
+                        onmouseover='TTS_speak($(this).val(), "title")' onclick='TTS_speak($(this).val(), "title")'> 
+                </div>
+                <br>
+                <div class="form-group col-sm-12">
+                    <label for="content" onmouseover='TTS_speak("text, content", "e")'>Content</label><br>
+                    <textarea id="content" name="content" rows="14" placeholder="Describe your phone number, favorite color, favorite food, and one fairy tale in turn." style="padding-top: 8px;" 
+                        onmouseover='TTS_speak($(this).val(), "content")' onclick='TTS_speak($(this).val(), "content")'></textarea> 
+                </div>
+            </div>
+
+            <input class="submit btn btn-primary" id="submit" type=submit value="Send Email" 
+                onmouseover='TTS_speak("button, send email", "e")' onclick="sendEmail(true)"> 
+
+        </form> 
+    <!---------------------- Plain e-mail Form ------------------------> 
+    
+    </div>
+
+<!------------------------- JS scripts -------------------------------> 
+
+  
+  
+<script src="vendor/jquery.min.js"></script> <!-- jquery -->
+<script src="vendor/bootstrap/bootstrap337.min.js"></script> <!-- bootstrap -->
+<script src="vendor/sweetalert2/sweetalert2.all.js"></script> <!-- sweetalert2 -->
+<script src="vendor/anyang.js"></script> <!-- STT : anyang -->
+<script src="vendor/responsivevoice/responsivevoice.js"></script> <!-- TTS : responsivevoice -->
+<script src="vendor/soundview_eng.js"></script> <!-- my custom JS : english -->
+
+
+</body>
+</html>

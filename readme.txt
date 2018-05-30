@@ -4,7 +4,9 @@
 
 ---------------------------------------------------------------
 
-0. How to Visit the Exp(Practice) Site : link url -> https://jukook.github.io/HCI_soundview/.
+0. How to Visit the Exp(Practice) Site : 
+	link url(korean) -> https://jukook.github.io/HCI_soundview/soundview.html
+	link url(english) -> https://jukook.github.io/HCI_soundview/soundview_eng.html
 
 
 1. Practice SOUNDVIEW : Click '사운드뷰 실행' button.

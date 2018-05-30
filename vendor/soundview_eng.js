@@ -1,7 +1,7 @@
 $('#start_anyang').click(function() {
     swal(
       'Good job!',
-      'SOUNDVIEW 를 시작합니다.',
+      'Start SOUNDVIEW.',
       'success'
     )
     $(this).toggle();
@@ -35,47 +35,47 @@ function start_soundview() {
         var Current = '';
         var Previous = '';
         var commands = {
-            '안녕': function() {
-                document.getElementById('result').innerHTML = "안녕";
+            'hello': function() {
+                document.getElementById('result').innerHTML = "Hello";
                 swal({
-                  title: '안녕하세요 저는 \nSOUNDVIEW 봇입니다.',
+                  title: 'Nice to meet you. \nI am SOUNDVIEW bot.',
                   animation: false,
                   customClass: 'animated tada'
                 })
                 readHello();
             },
-            '확인': function() {
+            'check': function() {
                 if (IsNameFocus === true) {
-                    document.getElementById('result').innerHTML = "보내는 사람 확인";
+                    document.getElementById('result').innerHTML = "Check Sender";
                     readName();
                 }
                 else if (IsSubjectFocus === true) {
-                    document.getElementById('result').innerHTML = "제목 확인";
+                    document.getElementById('result').innerHTML = "Check Title";
                     readSubject();
                 }
                 else if (IsContentFocus === true) {
-                    document.getElementById('result').innerHTML = "내용 확인";
+                    document.getElementById('result').innerHTML = "Check Content";
                     readContent();
                 }
             },
-            '이동 *qaz': function(qaz) {
+            'move *qaz': function(qaz) {
                 document.getElementById('result').innerHTML = qaz;
                 console.log(qaz);
-                if (qaz === '보내는 사람') {
+                if (qaz === 'sender') {
                     reachName();
                     $("#name").focus();
                     IsSubjectFocus = false;
                     IsContentFocus = false;
                     IsNameFocus = true;
                 }
-                else if (qaz === '제목') {
+                else if (qaz === 'title') {
                     reachSubject();
                     $("#subject").focus();
                     IsSubjectFocus = true;
                     IsContentFocus = false;
                     IsNameFocus = false;
                 }
-                else if (qaz === '내용') {
+                else if (qaz === 'content') {
                     reachContent();
                     $("#content").focus();
                     IsSubjectFocus = false;
@@ -88,10 +88,10 @@ function start_soundview() {
                     IsNameFocus = false;
                 }
             },
-            '입력 *qaz': function(qaz) {
+            'typing *qaz': function(qaz) {
                 document.getElementById('result').innerHTML = qaz;
                 if (IsNameFocus === true) {
-                    if (qaz === '삭제' || qaz === '삭재') {
+                    if (qaz === 'delete') {
                         $("#name").val('');
                         responseQAZ(qaz);
                     } else {
@@ -100,7 +100,7 @@ function start_soundview() {
                     }
                 }
                 else if (IsSubjectFocus === true) {
-                    if (qaz === '삭제' || qaz === '삭재') {
+                    if (qaz === 'delete') {
                         $("#subject").val('');
                         responseQAZ(qaz);
                     } else {
@@ -110,20 +110,20 @@ function start_soundview() {
                 }
                 else if (IsContentFocus === true) {
                     Current = $("#content").val();
-                    if (qaz === '삭제' || qaz === '삭재') {
+                    if (qaz === 'delete') {
                         $("#content").val(Previous);
                         responseQAZ(qaz);
                     }
-                    else if (qaz === '초기화') {
+                    else if (qaz === 'clean') {
                         $("#content").val('');
                     }
-                    else if (qaz === '엔터' || qaz === '앤터') {
+                    else if (qaz === 'enter') {
                         $("#content").val(Current + ".\n");
                         responseQAZ(qaz);
                     }
-                    else if (qaz === '스페이스' || qaz === 'space' || qaz === '스패이스') {
+                    else if (qaz === 'space') {
                         $("#content").val(Current + " ");
-                        responseQAZ("스페이스 바");
+                        responseQAZ("space bar");
                     }
                     else {
                         Previous = $("#content").val();
@@ -136,7 +136,7 @@ function start_soundview() {
                 sendEmail(false);
             }
         };
-        annyang.setLanguage("ko");
+        annyang.setLanguage("en-US");
         annyang.addCommands(commands);
         annyang.start();
     }
@@ -147,7 +147,7 @@ function start_soundview() {
 function TTS_speak(text, position) {
     
     if (text.toString() === '') {
-        responsiveVoice.speak("빈 입력 박스, " + position.toString(), "Korean Female", "ko-KR");
+        responsiveVoice.speak("empty input box, " + position.toString());
 //        if (position.toString() === "보내는 사람") {
 //            responsiveVoice.speak("빈 입력 박스, 보내는 사람", "Korean Female", "ko-KR");
 //        } else if (position.toString() === "제목") {
@@ -157,9 +157,9 @@ function TTS_speak(text, position) {
 //        }
     } else {
         if (position.toString() === 'e') {
-            responsiveVoice.speak(text.toString(), "Korean Female", "ko-KR");    
+            responsiveVoice.speak(text.toString());    
         } else {
-            responsiveVoice.speak(position.toString() + "확인, " + text.toString(), "Korean Female", "ko-KR");    
+            responsiveVoice.speak(position.toString() + "check, " + text.toString());    
         }
         
     }
@@ -170,42 +170,42 @@ function TTS_speak(text, position) {
 // TTS Part using Responsevoice API for SOUNDVIEW -------------------------------------
 
 function readHello() {
-    responsiveVoice.speak("안녕하세요 저는 사운드뷰  봇 입니다.", "Korean Female", "ko-KR");
+    responsiveVoice.speak("Nice to meet you. I am SOUNDVIEW bot.");
 }
 
 function reachName() {
-    responsiveVoice.speak("보내는 사람 입력 박스로 이동합니다.", "Korean Female", "ko-KR");
+    responsiveVoice.speak("Move to Sender input box");
 }
 
 function reachSubject() {
-    responsiveVoice.speak("제목 입력 박스로 이동합니다.", "Korean Female", "ko-KR");
+    responsiveVoice.speak("Move to Title input box");
 }
 
 function reachContent() {
-    responsiveVoice.speak("내용 입력 박스로 이동합니다.", "Korean Female", "ko-KR");
+    responsiveVoice.speak("Move to Content input box");
 }
 
 function readName() { 
-    responsiveVoice.speak("보내는 사람 확인, " + $('#name').val().toString(), "Korean Female", "ko-KR");
+    responsiveVoice.speak("Check sender, " + $('#name').val().toString());
 }
 
 function readSubject() {
-    responsiveVoice.speak("제목 확인, " + $('#subject').val().toString(), "Korean Female", "ko-KR");      
+    responsiveVoice.speak("Title sender, " + $('#subject').val().toString());      
 }
 
 function readContent() {
-    responsiveVoice.speak("내용 확인, " + $('#content').val().toString(), "Korean Female", "ko-KR");      
+    responsiveVoice.speak("Content sender, " + $('#content').val().toString());      
 }
 
 function responseQAZ(qaz) {
-    if (qaz === '삭제' ) {
-        responsiveVoice.speak("삭제되었습니다.", "Korean Female", "ko-KR");          
-    } else if (qaz === '엔터' || qaz === '앤터') {
-        responsiveVoice.speak("엔터", "Korean Female", "ko-KR");          
-    } else if (qaz === '스페이스' || qaz === 'space' || qaz === '스패이스') {
-        responsiveVoice.speak("스페이스 바", "Korean Female", "ko-KR");
+    if (qaz === 'delete' ) {
+        responsiveVoice.speak("delete complete");          
+    } else if (qaz === 'enter') {
+        responsiveVoice.speak("enter");          
+    } else if (qaz === 'space') {
+        responsiveVoice.speak("space bar");
     } else {
-        responsiveVoice.speak("입력, " + qaz, "Korean Female", "ko-KR");          
+        responsiveVoice.speak("typing, " + qaz);          
     }
 }
 
@@ -218,7 +218,7 @@ function sendEmail(Isfirst) {
     var _subject = $('#subject').val().toString();
     var _content = $('#content').val().toString();
     if (_name != '' && _subject != '' && _content != '') {
-        var textToSave = '제목 :<br>' + _subject + '<br><br>-----------------<br><br>내용 :<br>';
+        var textToSave = 'Title :<br>' + _subject + '<br><br>-----------------<br><br>Content :<br>';
         for (var idx=0; idx<_content.length; idx++) {
             if (_content[idx] === '\n') {
                 textToSave = textToSave + '<br>';
@@ -243,14 +243,14 @@ function sendEmail(Isfirst) {
         document.body.appendChild(downloadLink);
 
         downloadLink.click();
-        responsiveVoice.speak("메일이 정상적으로 발송되었습니다. 수고하셨습니다. ", "Korean Female", "ko-KR");         
+        responsiveVoice.speak("Your message has been successfully sent. Thank you.");         
     } else {
         if (_name === '') {
-            responsiveVoice.speak("보내는 사람의 이름이 입력되지 않았습니다. ", "Korean Female", "ko-KR");             
+            responsiveVoice.speak("The sender's name is not entered.");             
         } else if (_subject === '') {
-            responsiveVoice.speak("메일의 제목이 입력되지 않았습니다. ", "Korean Female", "ko-KR");             
+            responsiveVoice.speak("The title is not entered.");             
         } else if (_content === '') {
-            responsiveVoice.speak("메일의 내용이 입력되지 않았습니다. ", "Korean Female", "ko-KR");             
+            responsiveVoice.speak("The mail's content is not entered.");             
         }
         return false;
     }
